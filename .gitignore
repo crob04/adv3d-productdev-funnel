@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Operator/agent artifacts (never ship)
+AGENTS.md
+CLAUDE.md
+_brief/
+research/
+evidence/
+.DS_Store
+*.log
+
