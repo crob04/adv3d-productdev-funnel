@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID?.trim();
 
 const inter = Inter({
   variable: "--font-inter",
@@ -47,6 +50,20 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${syne.variable}`}>
       <body className="bg-brand-black text-brand-text antialiased">
         {children}
+        {gaId ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
