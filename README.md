@@ -65,3 +65,5 @@ All values are env-driven. Do NOT inject placeholder addresses into shipped sour
 ## Deploy
 
 `vercel.json` pins the framework. `npm run build` produces a Vercel-deployable artifact. The `adv3d-productdev-funnel` Vercel project alias is the canonical production URL.
+
+Set `NEXT_PUBLIC_GA_ID` in Vercel to enable the Google Analytics 4 tag. The tag is omitted when the variable is unset.
